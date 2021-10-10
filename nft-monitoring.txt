@@ -1,0 +1,9 @@
+/* Monitor each lazily minted NFT minted on Ethereum blockchain (first sale of a lazily minted NFT) */
+
+stream _
+from ETH_MintGate1155_CreateERC1155Rarible_Events
+where @contract == ETH.address("0x2741532ae23ee3a3c0c272b17f9a2fb69bc24388")
+
+process
+  emit { @owner, @name, message: "NFT minted on Rarible (first sale)"  }
+end
